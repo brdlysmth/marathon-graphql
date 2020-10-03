@@ -1,4 +1,17 @@
 const { ApolloServer, gql } = require("apollo-server");
+const firebase = require("firebase");
+
+firebase.initializeApp({
+  apiKey: "AIzaSyDUft6-vlagWfsWqnvXyRkrBC6lpjrbNto",
+  authDomain: "smartsubmittals.firebaseapp.com",
+  databaseURL: "https://smartsubmittals.firebaseio.com",
+  projectId: "smartsubmittals",
+  storageBucket: "smartsubmittals.appspot.com",
+  messagingSenderId: "569569955797",
+  appId: "1:569569955797:web:5ed7d415c3bdba042a375c",
+  measurementId: "G-NN0MTDTNXS",
+});
+const db = firebase.database();
 
 const books = [
   {
@@ -29,6 +42,10 @@ const typeDefs = gql`
   type Query {
     books: [Book]
   }
+
+  type Mutation {
+    setName: Boolean
+  }
 `;
 
 // Resolvers define the technique for fetching the types defined in the
@@ -36,6 +53,15 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     books: () => books,
+  },
+  Mutation: {
+    setName: async () => {
+      await db.ref("projects/").push({
+        name: "Project",
+        number: "Project Uno",
+      });
+      return true;
+    },
   },
 };
 
