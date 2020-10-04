@@ -1,3 +1,7 @@
-### LETS GO
+### Graphql Starter
 
-- apollo server wired up
+- Apollo Server
+- GraphQL Code Generation
+- Sample Queries
+- Sample Mutations
+- Connection to Firebase DB
