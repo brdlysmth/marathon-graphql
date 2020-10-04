@@ -1,76 +1,13 @@
-const { ApolloServer, gql } = require("apollo-server");
-const firebase = require("firebase");
-
-firebase.initializeApp({
-  apiKey: "AIzaSyDUft6-vlagWfsWqnvXyRkrBC6lpjrbNto",
-  authDomain: "smartsubmittals.firebaseapp.com",
-  databaseURL: "https://smartsubmittals.firebaseio.com",
-  projectId: "smartsubmittals",
-  storageBucket: "smartsubmittals.appspot.com",
-  messagingSenderId: "569569955797",
-  appId: "1:569569955797:web:5ed7d415c3bdba042a375c",
-  measurementId: "G-NN0MTDTNXS",
-});
-const db = firebase.database();
-
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
-
-// A schema is a collection of type definitions (hence "typeDefs")
-// that together define the "shape" of queries that are executed against
-// your data.
-const typeDefs = gql`
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
-
-  # This "Book" type defines the queryable fields for every book in our data source.
-  type Book {
-    title: String
-    author: String
-  }
-
-  # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
-  type Query {
-    books: [Book]
-  }
-
-  type Mutation {
-    setName: Boolean
-  }
-`;
-
-// Resolvers define the technique for fetching the types defined in the
-// schema. This resolver retrieves books from the "books" array above.
-const resolvers = {
-  Query: {
-    books: () => books,
-  },
-  Mutation: {
-    setName: async () => {
-      await db.ref("projects/").push({
-        name: "Project",
-        number: "Project Uno",
-      });
-      return true;
-    },
-  },
-};
+import { ApolloServer, gql } from "apollo-server";
+import { importSchema } from "graphql-import";
+const typeDefs: any = importSchema("schema.graphql");
+import resolvers from "./src/graphql/resolvers";
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
 const server = new ApolloServer({ typeDefs, resolvers });
 
 // The `listen` method launches a web server.
-// eslint-disable-next-line
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });

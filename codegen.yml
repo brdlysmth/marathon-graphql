@@ -1,0 +1,23 @@
+schema: schema.graphql
+hooks:
+  afterOneFileWrite:
+    - prettier --write
+generates:
+  src/types/graphql.ts:
+    plugins:
+      - add:
+          content: "/* THIS IS A GENERATED FILE, DO NOT EDIT DIRECTLY */"
+      - add:
+          content: "/* eslint-disable */"
+      - typescript
+      - typescript-resolvers
+    config:
+      rootValueType: undefined
+      maybeValue: T | null | undefined
+      avoidOptionals: true
+      showUnusedMappers: true
+      noSchemaStitching: true
+      skipTypename: true
+      enumsAsTypes: true
+      namingConvention:
+        enumValues: keep

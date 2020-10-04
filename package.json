@@ -2,18 +2,38 @@
   "name": "mercury",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
-    "start": "node index.ts",
+    "start": "tsc && node build/index.js",
+    "generate": "npm run generate:schema && npm run generate:types",
+    "generate:schema": "ts-node -T ./src/graphql/schemaCreator.ts && prettier --write schema.graphql",
+    "generate:types": "graphql-codegen --config codegen.yml",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brdlysmth/mercury.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brdlysmth/mercury/issues"
+  },
+  "homepage": "https://github.com/brdlysmth/mercury#readme",
   "dependencies": {
     "apollo-server": "^2.18.1",
-    "firebase": "^7.22.0",
     "firebase-admin": "^9.2.0",
     "graphql": "^15.3.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/add": "^2.0.1",
+    "@graphql-codegen/cli": "1.17.10",
+    "@graphql-codegen/typescript": "1.17.10",
+    "@graphql-codegen/typescript-document-nodes": "1.17.8",
+    "@graphql-codegen/typescript-resolvers": "1.17.10",
+    "graphql-import": "^1.0.2",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.3"
   }
 }
