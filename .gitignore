@@ -68,3 +68,5 @@ package-lock.json
 build
 
 dev.sqlite3
+
+.DS_Store
