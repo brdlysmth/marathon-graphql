@@ -72,4 +72,6 @@ dev.sqlite3
 .DS_Store
 
 # Credentials
+cert.ts
 credentials
+credentials/*
