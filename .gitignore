@@ -70,3 +70,6 @@ build
 dev.sqlite3
 
 .DS_Store
+
+# Credentials
+credentials
