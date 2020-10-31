@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brdlysmth/mercury.git"
+    "url": "git+https://github.com/brdlysmth/marathon-graphql.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/brdlysmth/mercury/issues"
+    "url": "https://github.com/brdlysmth/marathon-graphql/issues"
   },
-  "homepage": "https://github.com/brdlysmth/mercury#readme",
+  "homepage": "https://github.com/brdlysmth/marathon-graphql#readme",
   "dependencies": {
     "apollo-server": "^2.18.1",
     "firebase-admin": "^9.2.0",
