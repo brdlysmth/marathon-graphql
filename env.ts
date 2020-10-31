@@ -9,7 +9,7 @@ export const rootPath = path.join(__dirname, "..", isBuiltCode ? ".." : "");
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { version: pjsonVersion } = require(path.join(
   rootPath,
-  "/mercury/package.json"
+  "/marathon-graphql/package.json"
 ));
 export const version = pjsonVersion;
 
@@ -21,15 +21,15 @@ export const isLocal = !!AQUILA_LOCAL && NODE_ENV !== "test";
 
 // Credentials
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const prodCred = require("../credentials/smartsubmittals.json");
+const prodCred = require("../credentials/marathon-graphql.json");
 
 // Firebase
 const credentials = {
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
-  apiKey: "AIzaSyBnHhFmE39eyyXEN4l8FUZ5d55hvAmEMJ8",
+  apiKey: "AIzaSyAB3lc_Ak2Zz3n1UHDpQByBcaJ-HF0q0-I",
   credential: prodCred,
-  databaseURL: "https://smartsubmittals.firebaseio.com/",
+  databaseURL: "https://marathontrainer-4e293.firebaseio.com/",
 };
 
 console.info("Using production DB...");
