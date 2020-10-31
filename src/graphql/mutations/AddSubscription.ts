@@ -22,7 +22,7 @@ export const doAddSubscription = async (phoneNumber: string, raceType: string, s
 export const sendFirstText = () => {
   return sendText({
     to: '4783181282',
-    body: 'Subscription created!'
+    body: 'Subscription created! You are not subscribed yet, but this is what a confirmation text will look like. This project is moving.'
   })
 }
 
