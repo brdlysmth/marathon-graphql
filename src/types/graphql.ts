@@ -18,47 +18,31 @@ export type Scalars = {
   Float: number;
 };
 
-/** Smart Submittals Queries */
+/** Marathon Trainer Queries */
 export type Query = {
-  /** Get all projects */
-  AllProjects: Array<Project>;
-  /** Get a single project */
-  Project: Project;
+  hello: Scalars["String"];
 };
 
-/** Smart Submittals Queries */
-export type QueryProjectArgs = {
-  input: GetProjectInput;
-};
-
-/** Smart Submittals Queries */
+/** Marathon Trainer Mutations */
 export type Mutation = {
   /** Get all projects */
-  AddProject: Maybe<AddProjectResponse>;
+  AddSubscription: Maybe<AddSubscriptionResponse>;
 };
 
-/** Smart Submittals Queries */
-export type MutationAddProjectArgs = {
-  input: AddProjectInput;
+/** Marathon Trainer Mutations */
+export type MutationAddSubscriptionArgs = {
+  input: AddSubscriptionInput;
 };
 
-export type AddProjectInput = {
+export type AddSubscriptionInput = {
   /** The id of the customer to add the address to */
-  name: Scalars["String"];
-  number: Scalars["Int"];
+  phoneNumber: Scalars["String"];
+  raceType: Scalars["String"];
+  skillLevel: Scalars["String"];
 };
 
-export type AddProjectResponse = {
-  name: Maybe<Scalars["String"]>;
-};
-
-export type GetProjectInput = {
-  id: Scalars["String"];
-};
-
-export type Project = {
-  name: Scalars["String"];
-  number: Scalars["Int"];
+export type AddSubscriptionResponse = {
+  success: Maybe<Scalars["Boolean"]>;
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -169,26 +153,20 @@ export type DirectiveResolverFn<
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Query: ResolverTypeWrapper<undefined>;
-  Mutation: ResolverTypeWrapper<undefined>;
-  AddProjectInput: AddProjectInput;
   String: ResolverTypeWrapper<Scalars["String"]>;
-  Int: ResolverTypeWrapper<Scalars["Int"]>;
-  AddProjectResponse: ResolverTypeWrapper<AddProjectResponse>;
-  GetProjectInput: GetProjectInput;
-  Project: ResolverTypeWrapper<Project>;
+  Mutation: ResolverTypeWrapper<undefined>;
+  AddSubscriptionInput: AddSubscriptionInput;
+  AddSubscriptionResponse: ResolverTypeWrapper<AddSubscriptionResponse>;
   Boolean: ResolverTypeWrapper<Scalars["Boolean"]>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Query: undefined;
-  Mutation: undefined;
-  AddProjectInput: AddProjectInput;
   String: Scalars["String"];
-  Int: Scalars["Int"];
-  AddProjectResponse: AddProjectResponse;
-  GetProjectInput: GetProjectInput;
-  Project: Project;
+  Mutation: undefined;
+  AddSubscriptionInput: AddSubscriptionInput;
+  AddSubscriptionResponse: AddSubscriptionResponse;
   Boolean: Scalars["Boolean"];
 };
 
@@ -196,52 +174,33 @@ export type QueryResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["Query"] = ResolversParentTypes["Query"]
 > = {
-  AllProjects: Resolver<
-    Array<ResolversTypes["Project"]>,
-    ParentType,
-    ContextType
-  >;
-  Project: Resolver<
-    ResolversTypes["Project"],
-    ParentType,
-    ContextType,
-    RequireFields<QueryProjectArgs, "input">
-  >;
+  hello: Resolver<ResolversTypes["String"], ParentType, ContextType>;
 };
 
 export type MutationResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["Mutation"] = ResolversParentTypes["Mutation"]
 > = {
-  AddProject: Resolver<
-    Maybe<ResolversTypes["AddProjectResponse"]>,
+  AddSubscription: Resolver<
+    Maybe<ResolversTypes["AddSubscriptionResponse"]>,
     ParentType,
     ContextType,
-    RequireFields<MutationAddProjectArgs, "input">
+    RequireFields<MutationAddSubscriptionArgs, "input">
   >;
 };
 
-export type AddProjectResponseResolvers<
+export type AddSubscriptionResponseResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes["AddProjectResponse"] = ResolversParentTypes["AddProjectResponse"]
+  ParentType extends ResolversParentTypes["AddSubscriptionResponse"] = ResolversParentTypes["AddSubscriptionResponse"]
 > = {
-  name: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type ProjectResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes["Project"] = ResolversParentTypes["Project"]
-> = {
-  name: Resolver<ResolversTypes["String"], ParentType, ContextType>;
-  number: Resolver<ResolversTypes["Int"], ParentType, ContextType>;
+  success: Resolver<Maybe<ResolversTypes["Boolean"]>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
   Query: QueryResolvers<ContextType>;
   Mutation: MutationResolvers<ContextType>;
-  AddProjectResponse: AddProjectResponseResolvers<ContextType>;
+  AddSubscriptionResponse: AddSubscriptionResponseResolvers<ContextType>;
 };
 
 /**

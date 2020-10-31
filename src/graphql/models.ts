@@ -1,5 +1,4 @@
-export type Project = Firebase.Project;
 
-export interface AddProjectResponse {
-  name: string;
+export interface AddSubscriptionResponse {
+  success: Boolean;
 }

@@ -7,13 +7,12 @@ declare namespace Firebase {
 
   interface Root {
     // Who is considered an admin for distributor portal + mutations
-    projects: {
-      [projectKey: string]: Project;
-    };
-  }
-
-  interface Project {
-    name: string;
-    number: number;
+    subscriptions: {
+            [subscriptionKey: string]: {
+                phoneNumber: String
+                raceType: String
+                skillLevel: String
+            };
+        }
   }
 }
