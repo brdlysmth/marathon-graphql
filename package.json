@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "start": "tsc && node build/index.js",
+    "start:production": "NODE_ENV=production tsc && node build/index.js",
     "generate": "npm run generate:schema && npm run generate:types",
     "generate:schema": "ts-node -T ./src/graphql/schemaCreator.ts && prettier --write schema.graphql",
     "generate:types": "graphql-codegen --config codegen.yml",
@@ -24,7 +25,8 @@
   "dependencies": {
     "apollo-server": "^2.18.1",
     "firebase-admin": "^9.2.0",
-    "graphql": "^15.3.0"
+    "graphql": "^15.3.0",
+    "twilio": "^3.50.0"
   },
   "devDependencies": {
     "@graphql-codegen/add": "^2.0.1",

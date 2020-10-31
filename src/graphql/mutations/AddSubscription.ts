@@ -1,5 +1,6 @@
 import { db } from "../../../db";
 import { MutationResolvers } from "../../types/graphql";
+import { sendText } from '../../services/twilio';
 
 export const doAddSubscription = async (phoneNumber: string, raceType: string, skillLevel: string) => {
   const addSubscriptionToDB = () =>
@@ -14,8 +15,16 @@ export const doAddSubscription = async (phoneNumber: string, raceType: string, s
   });
 
   console.log("Subscription added..");
+  sendFirstText()
   return { success: true };
 };
+
+export const sendFirstText = () => {
+  return sendText({
+    to: '4783181282',
+    body: 'Subscription created!'
+  })
+}
 
 export const AddSubscription: MutationResolvers["AddSubscription"] = async (
   _root,
