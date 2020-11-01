@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "build/index.js",
+  "engines": {
+    "node": "12.16.1"
+  },
   "scripts": {
     "start": "tsc && node build/index.js",
     "start:production": "NODE_ENV=production tsc && node build/index.js",
