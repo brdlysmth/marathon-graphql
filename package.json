@@ -23,9 +23,12 @@
   },
   "homepage": "https://github.com/brdlysmth/marathon-graphql#readme",
   "dependencies": {
+    "@types/cron": "^1.7.2",
     "apollo-server": "^2.18.1",
+    "cron": "^1.8.2",
     "firebase-admin": "^9.2.0",
     "graphql": "^15.3.0",
+    "tsconfig-paths": "^3.9.0",
     "twilio": "^3.50.0"
   },
   "devDependencies": {
