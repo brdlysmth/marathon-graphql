@@ -4,10 +4,11 @@
   "description": "",
   "main": "build/index.js",
   "engines": {
-    "node": "12.16.1"
+    "node": "14.4.0"
   },
   "scripts": {
-    "start": "tsc && node build/index.js",
+    "build": "tsc",
+    "start": "node build/index.js",
     "start:production": "NODE_ENV=production tsc && node build/index.js",
     "generate": "npm run generate:schema && npm run generate:types",
     "generate:schema": "ts-node -T ./src/graphql/schemaCreator.ts && prettier --write schema.graphql",
