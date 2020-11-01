@@ -9,7 +9,8 @@
     "generate": "npm run generate:schema && npm run generate:types",
     "generate:schema": "ts-node -T ./src/graphql/schemaCreator.ts && prettier --write schema.graphql",
     "generate:types": "graphql-codegen --config codegen.yml",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-clock": "NODE_ENV=production node ./build/src/clock/index.js"
   },
   "repository": {
     "type": "git",
