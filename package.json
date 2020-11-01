@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "node build/index.js",
+    "start": "NODE_ENV=production node ./build/src/clock/index.js",
     "start:production": "NODE_ENV=production tsc && node build/index.js",
     "generate": "npm run generate:schema && npm run generate:types",
     "generate:schema": "ts-node -T ./src/graphql/schemaCreator.ts && prettier --write schema.graphql",
