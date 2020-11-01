@@ -1,8 +1,9 @@
 import { isProduction } from '../../env';
 import { Twilio } from 'twilio';
+import { twilioCert } from '../../cert'
 
-const twilioSID = 'AC2ec971367897aeb5ad20fbdaea45f13a';
-const twilioToken = '09983cf0bf875a4ff95da3f2f7593c2f';
+const twilioSID = twilioCert.sid;
+const twilioToken = twilioCert.token;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let twilio: Twilio;
